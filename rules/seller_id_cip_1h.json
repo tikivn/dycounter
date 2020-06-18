@@ -1,0 +1,18 @@
+{
+    "env": "prod",
+    "source": "druid",
+    "name": "seller_id_cip_1h",
+    "type": "interval",
+    "group_fields": [
+        "seller_ids",
+        "customer_ip"
+    ],
+    "threshold_cancel": 10,
+    "count_field": "seller_id_cip_1h",
+    "look_back_seconds": 3600,
+    "time_field": "event_time",
+    "scheduler": "*/1 * * * *",
+    "is_active": true,
+    "created_user": "cuong.vo2@tiki.vn",
+    "updated_user": "cuong.vo2@tiki.vn"
+}

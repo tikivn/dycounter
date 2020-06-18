@@ -1,0 +1,94 @@
+name: fds_transformer_dev
+timestamp: event_time
+kind: druidKafkaIndexer
+tunning:
+  rollup: false
+
+kafka:
+  bootstrap_servers: vm-prod-core-kafka-6.svr.tiki.services:9092,vm-prod-core-kafka-7.svr.tiki.services:9092
+  topic: data.oms.fds.transformer.dev
+  opts:
+    useEarliestOffset: false
+
+flattenSpec:
+- name: offset
+  type: path
+  expr: '$.meta.offset'
+- name: partition
+  type: path
+  expr: '$.meta.partition'
+- name: customer_id
+  type: path
+  expr: '$.customer.id'
+- name: customer_ip
+  type: path
+  expr: '$.customer.ip'
+- name: customer_phone
+  type: path
+  expr: '$.customer.phone'
+- name: phone_header
+  type: path
+  expr: '$.customer.phone_header'
+- name: customer_email
+  type: path
+  expr: '$.customer.email'
+- name: email_type
+  type: path
+  expr: '$.customer.email_type'
+- name: register_date
+  type: path
+  expr: '$.customer.register_date'
+
+dimensions:
+  - date_key
+  - order_code
+  - payload_action
+  - order_type
+  - status
+  - coupon_code
+  - payment_method
+  - name: value
+    type: double
+  - name: grand_total
+    type: double
+  - name: discount_coupon
+    type: double
+  - name: discount_tikixu
+    type: double
+  - name: discount_other
+    type: double
+  - name: discount_value
+    type: double
+  - name: shipping_value
+    type: double
+  - name: shipping_discount_value
+    type: double
+  - name: handling_fee
+    type: double
+  - items_qty
+  - items_count
+  - be_virtual
+  - platform
+  - customer
+  - product
+  - name: oms_timestamp
+    type: long
+  - name: oms_partition
+    type: long
+  - name: oms_offset
+    type: long
+  - name: offset
+    type: long
+  - name: partition
+    type: long
+  - customer_id
+  - customer_ip
+  - customer_phone
+  - phone_header
+  - customer_email
+  - email_type
+  - register_date
+  - seller_ids
+  - cate2_ids
+  - skus
+

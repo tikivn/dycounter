@@ -1,0 +1,17 @@
+{
+    "env": "prod",
+    "source": "druid",
+    "name": "couponRule_cip_eod",
+    "type": "eod",
+    "group_fields": [
+        "coupon_rule_id",
+        "customer_ip"
+    ],
+    "threshold_cancel": 10,
+    "count_field": "couponRule_cip_eod",
+    "time_field": "event_time",
+    "scheduler": "*/1 * * * *",
+    "is_active": true,
+    "created_user": "cuong.vo2@tiki.vn",
+    "updated_user": "cuong.vo2@tiki.vn"
+}

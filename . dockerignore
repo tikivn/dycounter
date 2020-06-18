@@ -1,0 +1,11 @@
+.vscode
+.git
+
+**/*.pyc
+**/*.swp
+**/__pycache__
+
+# Compiled Documentation
+test
+build
+debug

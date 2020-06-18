@@ -1,0 +1,12 @@
+.vscode
+
+.env
+
+build
+test
+debug
+
+__pycache__
+*.pyc
+
+test.py

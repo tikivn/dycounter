@@ -1,0 +1,16 @@
+name: api
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - flask=1.1.2
+  - flask-httpauth=4.1.0
+  - pip=20.0.2=py36_3
+  - python=3.6.10
+  - pip:
+    - pandas==0.25.3
+    - pydruid==0.5.7
+    - pymongo==3.10.1
+    - pyyaml==5.1.2
+    - redis==3.4.1
+    - requests==2.22.0

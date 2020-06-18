@@ -1,0 +1,20 @@
+{
+    "env": "prod",
+    "source": "druid",
+    "name": "sku_platform_paymentMethod_emailType_1h",
+    "type": "interval",
+    "group_fields": [
+        "skus",
+        "platform",
+        "payment_method",
+        "email_type"
+    ],
+    "threshold_cancel": 10,
+    "count_field": "sku_platform_paymentMethod_emailType_1h",
+    "look_back_seconds": 3600,
+    "time_field": "event_time",
+    "scheduler": "*/1 * * * *",
+    "is_active": true,
+    "created_user": "cuong.vo2@tiki.vn",
+    "updated_user": "cuong.vo2@tiki.vn"
+}

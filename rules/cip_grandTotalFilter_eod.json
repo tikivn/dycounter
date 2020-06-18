@@ -1,0 +1,23 @@
+{
+    "env": "prod",
+    "source": "druid",
+    "name": "cip_grandTotalFilter_eod",
+    "type": "eod",
+    "group_fields": [
+        "customer_ip"
+    ],
+    "threshold_cancel": 10,
+    "count_field": "cip_grandTotalFilter_eod",
+    "filter" : {
+        "type": "bound",
+        "dimension": "grand_total",
+        "upper": "20000.0" ,
+        "upperStrict": true,
+        "ordering": "numeric"
+    },
+    "time_field": "event_time",
+    "scheduler": "*/1 * * * *",
+    "is_active": true,
+    "created_user": "cuong.vo2@tiki.vn",
+    "updated_user": "cuong.vo2@tiki.vn"
+}

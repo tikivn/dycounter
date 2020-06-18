@@ -1,0 +1,21 @@
+{
+    "env": "prod",
+    "source": "druid",
+    "name": "cid_planIdFilter_eod",
+    "type": "eod",
+    "group_fields": [
+        "customer_id"
+    ],
+    "threshold_cancel": 10,
+    "count_field": "cid_planIdFilter_eod",
+    "filter" : {
+        "type": "selector",
+        "dimension": "plan_id",
+        "value": "3"
+    },
+    "time_field": "event_time",
+    "scheduler": "*/1 * * * *",
+    "is_active": true,
+    "created_user": "cuong.vo2@tiki.vn",
+    "updated_user": "cuong.vo2@tiki.vn"
+}

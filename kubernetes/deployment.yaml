@@ -1,0 +1,97 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dycounter
+  namespace: danalytics
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        name: dycounter
+    spec:
+      containers:
+      - image: asia.gcr.io/tikivn/dycounter:latest
+        imagePullPolicy: Always
+        restartPolicy: Always
+        name: dycounter
+        env:
+          - name: FRAUD_DRUID_URL
+            valueFrom:
+              secretKeyRef:
+                - name: dycounter-secrets
+                  key: fraud_druid_url
+          - name: FRAUD_DRUID_PATH
+            valueFrom:
+              secretKeyRef:
+                - name: dycounter-secrets
+                  key: fraud_druid_path
+          - name: FRAUD_DRUID_USER
+            valueFrom:
+              secretKeyRef:
+                - name: dycounter-secrets
+                  key: fraud_druid_user
+          - name: FRAUD_DRUID_PASS
+            valueFrom:
+              secretKeyRef:
+                - name: dycounter-secrets
+                  key: fraud_druid_pass
+          - name: FRAUD_MONGO_HOST
+            valueFrom:
+              secretKeyRef:
+                - name: dycounter-secrets
+                  key: fraud_mongo_host
+          - name: FRAUD_MONGO_PORT
+            valueFrom:
+              secretKeyRef:
+                - name: dycounter-secrets
+                  key: fraud_mongo_port
+          - name: FRAUD_MONGO_USER
+            valueFrom:
+              secretKeyRef:
+                - name: dycounter-secrets
+                  key: fraud_mongo_user
+          - name: FRAUD_MONGO_PASS
+            valueFrom:
+              secretKeyRef:
+                - name: dycounter-secrets
+                  key: fraud_mongo_pass
+          - name: FRAUD_MONGO_AUTH
+            valueFrom:
+              secretKeyRef:
+                - name: dycounter-secrets
+                  key: fraud_mongo_auth
+          - name: FRAUD_MONGO_MECHANISM
+            valueFrom:
+              secretKeyRef:
+                - name: dycounter-secrets
+                  key: fraud_mongo_mechanism
+          - name: MONGO_POOL_MAX
+            valueFrom:
+              secretKeyRef:
+                - name: dycounter-secrets
+                  key: mongo_pool_max
+          - name: MONGO_POOL_TIMEOUT
+            valueFrom:
+              secretKeyRef:
+                - name: dycounter-secrets
+                  key: mongo_pool_timeout
+          - name: MONGO_AUTO_CONNECT
+            valueFrom:
+              secretKeyRef:
+                - name: dycounter-secrets
+                  key: mongo_auto_connect
+        volumeMounts:
+          - mountPath: /opt/dycounter/conf
+            name: dycounter-conf
+          - mountPath: /.secrets
+            name: dycounter-secrets
+      volumes:
+        - name: dycounter-conf
+          configMap:
+            name: dycounter-conf
+        - name: dycounter-secrets
+          secret:
+            secretName: dycounter-secrets

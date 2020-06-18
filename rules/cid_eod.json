@@ -1,0 +1,16 @@
+{
+    "env": "prod",
+    "source": "druid",
+    "name": "cid_eod",
+    "type": "eod",
+    "group_fields": [
+        "customer_id"
+    ],
+    "threshold_cancel": 10,
+    "count_field": "cid_eod",
+    "time_field": "event_time",
+    "scheduler": "*/1 * * * *",
+    "is_active": true,
+    "created_user": "cuong.vo2@tiki.vn",
+    "updated_user": "cuong.vo2@tiki.vn"
+}
